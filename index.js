@@ -70,9 +70,9 @@ module.exports = function (opts) {
             (first ? '' : ','),
             JSON.stringify(row.id),
             ':[',
-            'function(require,module,exports){\n',
+            '(function(require,module,exports){\n',
             combineSourceMap.removeComments(row.source),
-            '\n},',
+            '\n}),',
             '{' + Object.keys(row.deps || {}).sort().map(function (key) {
                 return JSON.stringify(key) + ':'
                     + JSON.stringify(row.deps[key])
